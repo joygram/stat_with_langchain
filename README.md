@@ -43,19 +43,27 @@ openAI의 api 키를 발급받는 방법을 chatGPT에 물어본 결과입니다
 
 `프롬프트: OpenAI API Key를 발급받으려면?`
 ```
-OpenAI API Key를 발급받으려면 OpenAI 웹사이트에서 API 액세스를 신청해야 합니다. API 액세스를 신청하려면 OpenAI 계정이 필요합니다.
+OpenAI API Key를 발급받으려면 OpenAI 웹사이트에서 API 액세스를 신청해야 합니다. 
+API 액세스를 신청하려면 OpenAI 계정이 필요합니다.
 
 API 액세스를 신청하려면 아래와 같은 단계를 따르면 됩니다.
 
-OpenAI 웹사이트 (https://openai.com/)에 접속합니다.
-홈페이지 상단의 "Get started for free" 버튼을 클릭합니다.
-"Create an account" 버튼을 클릭하여 OpenAI 계정을 생성합니다. 계정을 생성하는 과정에서 요구되는 정보를 입력합니다.
-계정 생성이 완료되면, "API" 메뉴에서 "API Documentation"을 선택합니다.
-"API Access" 섹션에서 "Request Access" 버튼을 클릭합니다.
-API 액세스 신청서를 작성하고, 제출합니다.
-API 액세스를 신청하면 일정 시간 이내에 OpenAI 측에서 신청서를 검토하고 승인 여부를 알려줍니다. 승인이 되면 Access Key와 Secret Key가 발급됩니다.
+- OpenAI 웹사이트 (https://openai.com/)에 접속합니다.
 
-Access Key와 Secret Key는 API 요청을 보낼 때 사용되는 인증 정보로, 발급된 키를 사용하여 API에 액세스할 수 있습니다. 발급된 키는 안전하게 보관되어야 하며, 다른 사람에게 노출되지 않도록 주의해야 합니다.
+- 홈페이지 상단의 "Get started for free" 버튼을 클릭합니다.
+
+- "Create an account" 버튼을 클릭하여 OpenAI 계정을 생성합니다. 계정을 생성하는 과정에서 요구되는 정보를 입력합니다.
+
+- 계정 생성이 완료되면, "API" 메뉴에서 "API Documentation"을 선택합니다.
+
+- "API Access" 섹션에서 "Request Access" 버튼을 클릭합니다.
+
+- API 액세스 신청서를 작성하고, 제출합니다.
+
+- API 액세스를 신청하면 일정 시간 이내에 OpenAI 측에서 신청서를 검토하고 승인 여부를 알려줍니다. 승인이 되면 Access Key와 Secret Key가 발급됩니다.
+
+Access Key와 Secret Key는 API 요청을 보낼 때 사용되는 인증 정보로, 발급된 키를 사용하여 API에 액세스할 수 있습니다. 
+발급된 키는 안전하게 보관되어야 하며, 다른 사람에게 노출되지 않도록 주의해야 합니다.
 ```
 
 ## langchain 라이브러리
@@ -94,8 +102,7 @@ agent는 어떤 행동을 할지 결정하여 행동하고 관찰합니다. 그�
 ## 구현해보기 
 
 csv기반의 데이터 분석을 위해서 필요한 코드는 다음과 같습니다. 
-실제 파이썬 기술을 사용한다고 보기 어려울 정도입니다.
-물론, 
+
 
 ```python
 from langchain.agents import create_csv_agent
@@ -108,14 +115,22 @@ agent = create_csv_agent(OpenAI(temperature=0), data_path, verbose=True)
 agent.run("데이터에 몇 열이 있어?")
 ```
 
+실제 파이썬 코딩 스킬을 사용했다고 보기 어려울 정도입니다.
+
+물론, 가장 기초적인 지식은 있으면 좋겠지요^^
+
+
 ## 실습해보기
+
 기본 환경이 설정된 이후에는 편안하게 원하는 바를 타이핑하면 됩니다.
+
 준비한 간단한 데이터셋을 통해 프롬프팅 해보겠습니다. 
 
 
 
 ## 마무리하며 
 얼핏보면 chatGPT에 바로 프롬프팅 하는 것과 큰 차이가 없어보일 수 있습니다. 
+
 좀 들여다보면 
 
 - ai에게 문제를 풀수 있도록 다양한 시도를 하는 점 
@@ -125,4 +140,5 @@ agent.run("데이터에 몇 열이 있어?")
 등은 설명하지 않아도 어떻게 활용할지에 대해 상상하실 수 있을 것입니다. 
 
 익숙하지 않은 학습 허들을 지나서 본연의 목표에 집중하는 것 
+
 그것이 ai시대의 방향성이 아닌가 싶습니다. 
