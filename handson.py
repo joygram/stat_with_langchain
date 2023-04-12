@@ -1,47 +1,66 @@
 import os 
+import os.path
+import sys
 import pandas as pd 
 
-print(">> set api key")
-# 여기에 openai api key를 넣습니다. 
-os.environ["OPENAI_API_KEY"] = ""
-
-print (">> read tain data 'train.csv'")
-df = pd.read_csv("./data/train.csv")
-
-print (">> head of data frame")
-print(df.head())
-
-
-
-print (">> run langchain agent ")
 from langchain.agents import create_csv_agent
 from langchain.llms import OpenAI
 
-agent = create_csv_agent(OpenAI(temperature=0), './data/train.csv', verbose=True)
+# global variable 
+agent = None
 
-print(agent) 
+def prompt():
+    global agent
+    cmd = "init"
+    while(cmd != ""):
+        cmd = input("prompt[`enter` for exit]:")
+        if cmd == "":
+            break 
+        agent.run(cmd)
+        
+def select_data():
+    import glob
+    
+    global agent
+    path = "./data/*.csv"
+    file_list = glob.glob(path)
+    for idx, filename in enumerate(file_list):
+        print(f"{idx}:{filename}")
+    num = input(f"select data [0-{len(file_list)-1}] or `enter` for exit: ")
+    try:
+        data_idx = int(num)
+    except:
+        print (f"thank you for using.")
+        sys.exit(0)
+    
+    data_path = file_list[data_idx]
+    print(f"using {data_path}")
+    agent = create_csv_agent(OpenAI(temperature=0), data_path, verbose=True)
+    print("== agent info ==")
+    print(agent)
+    print("================")
+    #print (">> 프롬프트 템플릿(prompt template)")
+    #print(agent.agent.llm_chain.prompt.template)
+    agent.run("데이터에 몇 열이 있어?")
+    
+    prompt()
+    
 
-print (">> 프롬프트 템플릿(prompt template)")
-print(agent.agent.llm_chain.prompt.template)
+# 여기에 openai api key를 넣습니다. 
+os.environ["OPENAI_API_KEY"] = ""
 
 
-agent.run("데이터에 몇 열이 있어?")
+# 근린공원과 소공원의 분포는?
+# 운동시설의 분포는?
 
+# 먼지 농도와 습도와의 상관관계는?
+# 미세먼지가 가장 심했던 날과 지역은?
+# 압축 천연가스를 가장 많이 보유한 회사는?
 
-agent.run("여자는 몇명이나 있구매횟수의 분포가 가장 높은 여자들의 분포는?지?")
+# 면적대비 시가표준액이 낮은 상위 1%는?
+# 과세년도 2021년에 시가총액이 가장높은 것은?
 
-agent.run("현재 도시에서 3년 넘게 지내고 있는  사람은 몇명?")
-
-agent.run("현재 도시에서 3년 넘게 지내고 있는  사람 중 여자는 몇명?")
-
-agent.run("구매횟수의 분포가 가장 높은 여자들의 분포는?")
-
-agent.run("구매횟수의 분포가 가장 높은 여자들의 분포를 그래프로 그리면?")
-
-
-prompt = "init"
-while(prompt != ""):
-    prompt = input("chat:")
-    agent.run(prompt)
+while True:
+    select_data()
     
 
