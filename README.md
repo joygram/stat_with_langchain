@@ -71,11 +71,15 @@ Access Key와 Secret Key는 API 요청을 보낼 때 사용되는 인증 정보�
 langchain은 chatGPT와 wolfram Alpha(울프람 알파)를 결합하여 보다 정확하고 자세한 답변을 얻는 방법입니다.
 
 - langchain은 AI에게 Wolfram Alpha(계산적 사고)와 chatGPT(언어적 사고)로 작업하는 방법을 가르치는 시도를 합니다.
+
 - 사용자의 질문을 판단하여 Alpha나 GPT에 API를 호출합니다.
+
 - langchain은 수학 물리등 복잡한 처리를 보다 잘 해낼 수 있습니다.
 
 오늘 제공하는 실습을 위해서
+
 - 파이썬3.10 이상을 설치합니다. 
+
 - langchain, openai, pandas라이브러리를 설치합니다.
 
 ```
