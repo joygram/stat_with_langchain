@@ -5,7 +5,7 @@
 - 강의의 목표 = AI로 계산 도구에 접근하고, 분석 단위·비교 기준·근거를 이해하며 자기 판단으로 결론 작성.
 
 <p align="center">
-  <img src="assets/ai-statistics-workflow.png" alt="사람의 질문에서 AI의 도구 선택·pandas 계산·결과 설명·사람의 검토로 이어지는 분석 과정" width="1000">
+  <img src="assets/ai-statistics-workflow.png" alt="질문·계산·판단의 세 단계: 사람이 기준을 정하고 AI와 도구를 연결해 계산한 뒤 사람이 검토·해석" width="1000">
 </p>
 
 ## 강의 읽기와 실습
